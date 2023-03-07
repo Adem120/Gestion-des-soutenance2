@@ -1,0 +1,50 @@
+
+<h1>{{!typedialoge ? 'Ajouter date' : 'Modifier date'}}</h1>
+<div mat-dialog-content>
+    <form>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Numero</mat-label>
+          <input type="date" matInput [formControl]="date" required>
+          <mat-error *ngIf="date.invalid">{{getErrorMessage()}}</mat-error>
+
+        </mat-form-field>
+       <div>
+            <mat-form-field appearance="fill">
+              <mat-label >Block</mat-label>
+      
+              <mat-select matInput [formControl]="Hdebut" required>
+              <mat-error *ngIf="Hdebut.invalid">{{getErrorMessage()}}</mat-error>
+      
+                <mat-option *ngFor="let d of dates" [value]="d"> {{d}}</mat-option>
+                
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label >Block</mat-label>
+      
+              <mat-select matInput [formControl]="Hfin" required>
+              <mat-error *ngIf="Hfin.invalid">{{getErrorMessage()}}</mat-error>
+      
+              <mat-option *ngFor="let d of dates" [value]="d"> {{d}}</mat-option>
+                
+              </mat-select>
+            </mat-form-field>
+          </div>
+    
+       
+
+    
+   <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close="">Annuler</button>
+    <button mat-raised-button color="primary" (click)="addEnseignant()" >
+
+    {{!typedialoge ? 'Ajouter' : 'Modifier'}}</button>
+      
+      
+       
+   
+   </div>
+</form>

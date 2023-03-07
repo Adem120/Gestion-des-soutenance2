@@ -1,0 +1,65 @@
+<h1>Ajouteé un etudient</h1>
+<div mat-dialog-content>
+    <form>
+      <mat-form-field class="example-full-width">
+        <mat-label>Cin</mat-label>
+        <input matInput [formControl]="cin" required>
+        <mat-error *ngIf="cin.invalid">{{getErrorMessage()}}</mat-error>
+
+      </mat-form-field>
+      <div class="alert alert-danger" [hidden]="!error.cin">{{error.cin}}</div>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>NOM</mat-label>
+          <input matInput [formControl]="nom" required>
+          <mat-error *ngIf="nom.invalid">{{getErrorMessage()}}</mat-error>
+
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Prenom</mat-label>
+          <input matInput [formControl]="prenom" required>
+          <mat-error *ngIf="prenom.invalid">{{getErrorMessage()}}</mat-error>
+       </mat-form-field></td>
+      </tr></table> 
+  
+      <div>
+      <mat-form-field appearance="fill">
+        <mat-label >Parcours</mat-label>
+
+        <mat-select matInput [formControl]="parcours" required>
+        <mat-error *ngIf="parcours.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-option value="TI"> TI</mat-option>
+          <mat-option value="DSI"> DSI</mat-option>
+          <mat-option value="MDW">MDW</mat-option>
+          <mat-option value="MDW">RSI</mat-option>
+          <mat-option value="SEM">SEM</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>Groupe</mat-label>
+        <input matInput [formControl]="groupe" required>
+        <mat-error *ngIf="groupe.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label >Type de stage</mat-label>
+          <mat-error *ngIf="stage.invalid">{{getErrorMessage()}}</mat-error>
+
+          <mat-select matInput matInput [formControl]="stage" required>
+            <mat-option value="1"> initialisation</mat-option>
+            <mat-option value="2">parfactionnement</mat-option>
+            
+          </mat-select>
+        </mat-form-field>
+      </div>
+   <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close="">Annuler</button>
+    <button mat-raised-button color="primary" (click)="ajouterEtudiant()" >
+        ajouter
+       
+    </button>
+   </div>
+</form>

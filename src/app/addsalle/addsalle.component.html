@@ -1,0 +1,41 @@
+<h1>{{!typedialoge ? 'Ajouter salle' : 'Modifier salle'}}</h1>
+<div mat-dialog-content>
+    <form>
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Numero</mat-label>
+          <input matInput [formControl]="numero" required>
+          <mat-error *ngIf="numero.invalid">{{getErrorMessage()}}</mat-error>
+
+        </mat-form-field></td>
+        <td> <div>
+            <mat-form-field appearance="fill">
+              <mat-label >Block</mat-label>
+      
+              <mat-select matInput [formControl]="block" required>
+              <mat-error *ngIf="block.invalid">{{getErrorMessage()}}</mat-error>
+      
+                <mat-option value="A"> A</mat-option>
+                <mat-option value="B">B</mat-option>
+                <mat-option value="C">C</mat-option>
+                <mat-option value="D">D</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div></td>
+      </tr></table> 
+    
+    
+       
+
+    
+   <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close="">Annuler</button>
+    <button mat-raised-button color="primary" (click)="addEnseignant()" >
+
+    {{!typedialoge ? 'Ajouter' : 'Modifier'}}</button>
+      
+      
+       
+   
+   </div>
+</form>

@@ -1,0 +1,63 @@
+<h1>{{!typedialoge ? 'Ajouter ensiengnant' : 'Modifier ensiengnant'}}</h1>
+<div mat-dialog-content>
+  <div class="alert alert-danger" [hidden]="!errors.file" >{{this.erorrfile}}</div>
+
+  <div class="mb-5" [hidden]="typedialoge">
+	  <label for="formFileSm" class="form-label">Ajout a l'aide d'un fichier excel</label>
+	  <input  class="form-control form-control-sm mb-2" id="formFileSm"  type="file" (change)="onFileSelected($event)" required>
+
+    <button mat-raised-button  class="mb-2"color="primary" (click)=" onuploide()">Ajouter
+</button>
+
+<div *ngFor="let error of errors">
+<div class="alert alert-danger" [hidden]="!errors" >in row number:{{error.row}}=>{{error.errors}}</div>
+
+</div>
+
+	</div>
+	
+    <form>
+      <mat-form-field class="example-full-width">
+        <mat-label>Cin</mat-label>
+        <input matInput [formControl]="cin" required>
+        <mat-error *ngIf="cin.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <div class="alert alert-danger" [hidden]="!error.cin">{{error.cin}}</div>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>NOM</mat-label>
+          <input matInput [formControl]="nom" required>
+          <mat-error *ngIf="nom.invalid">{{getErrorMessage()}}</mat-error>
+
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Prenom</mat-label>
+          <input matInput [formControl]="prenom" required>
+          <mat-error *ngIf="prenom.invalid">{{getErrorMessage()}}</mat-error>
+       </mat-form-field></td>
+      </tr></table> 
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" [formControl]="emails" required>
+          <mat-error *ngIf="emails.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <div class="alert alert-danger" [hidden]="!error.email">{{error.email}}</div>
+
+      </div>
+    
+    
+
+    
+   <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close="">Annuler</button>
+    <button mat-raised-button color="primary" (click)="addEnseignant()" >
+
+    {{!typedialoge ? 'Ajouter' : 'Modifier'}}</button>
+      
+      
+       
+   
+   </div>
+</form>

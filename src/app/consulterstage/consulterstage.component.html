@@ -1,0 +1,85 @@
+<div class="div-center mb-3">
+    <div class="card login-form ">
+        <div class="card-body">
+            <h3 class="card-title text-center">Recherche soutenance</h3>
+
+            <div class="card-text ">
+                <form>
+                    <div class="form-group mb-3">
+                        <label for="exampleInputEmail1">Entrer votre numero de cin pour consulter votre soutenenace</label>
+                        <input matInput class="form-control form-control-sm" [formControl]="cin"
+                            placeholder="Entrer votre nemero de cin" required> 
+                        <mat-error *ngIf="cin.invalid">{{getErrorMessage()}}</mat-error>
+
+                    </div>
+                </form>
+
+                <button  class="btn btn-primary btn-block" (click)="getstage()">Consulter</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row my-custom-row justify-content-center align-items-center">
+  <div class="col-md-6 col-sm-12 col-lg-8">
+  
+
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="nepe">
+        <th class="text-center" mat-header-cell *matHeaderCellDef> Les etudiants</th>
+        <td class="text-center"mat-cell *matCellDef="let element" >{{element.nometud}} {{element.prenometud}}  </td>
+      </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="neps">
+        <th class="text-center" mat-header-cell *matHeaderCellDef> Ensiegnant1 </th>
+        <td class="text-center"mat-cell *matCellDef="let element" > {{element.nomens}} {{element.prenomens}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="neps2">
+        <th class="text-center" mat-header-cell *matHeaderCellDef> Ensiegnant2</th>
+        <td class="text-center" mat-cell *matCellDef="let element">{{element.prens2}} {{element.nomens2}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+   
+    
+      <ng-container matColumnDef="sal">
+        <th class="text-center" mat-header-cell *matHeaderCellDef> Salle</th>
+            <td class="text-center" mat-cell *matCellDef="let element"> {{element.numsal}} {{element.block}}</td>
+     
+      </ng-container>
+     
+     
+     
+      <ng-container matColumnDef="date">
+        <th class="text-center" mat-header-cell *matHeaderCellDef> Date </th>
+        <td class="text-center " mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+      <ng-container matColumnDef="heure">
+        <th class="text-center" mat-header-cell *matHeaderCellDef> Heure </th>
+        <td class="text-center " mat-cell *matCellDef="let element"> {{element.heuredebut}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="action">
+        <th class="text-center"mat-header-cell *matHeaderCellDef> Actions </th>
+        <td class="text-start " mat-cell *matCellDef="let element"> 
+           
+              <button mat-icon-button color="warn" (click)="openrecla(element.idetud)"><i class="fa-solid fa-triangle-exclamation"></i> Reclamation
+              </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+</div>
+</div>

@@ -1,0 +1,51 @@
+<div >
+  
+
+    <div >
+        <h1 >Login </h1>
+    </div>
+    
+
+
+<div class='box'>
+    <div class='box-form'>
+      <div class='box-login-tab'></div>
+      <div class='box-login-title'>
+      
+      </div>
+      
+      <div class='box-login'>
+        <div class='fieldset-body mb-2' id='login_form'>
+          <button (click)="openLoginInfo();" class='b b-form i i-more' title='More things'> </button>
+              <p class='field'>
+            <label for='user'>E-MAIL</label>
+            <input matInput type="text"[formControl]="email"   required/>
+            <mat-error *ngIf="email.invalid">enter your email</mat-error>
+          </p>
+              <p class='field'>
+            <label for='pass'>PASSWORD</label>
+            <input matInput type='password'  [formControl]="password"  required/>
+            <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+          </p>
+  
+            <label class='checkbox'>
+              <input type='checkbox' value='TRUE' title='Keep me Signed in' /> Keep me Signed in
+            </label>
+  
+              <input type='submit' id='do_login' value='GET STARTED' (click)="login();" title='Get Started' />
+             
+        </div>
+        <button routerLink="/consulter" class="btn btn-primary "> Consulter</button>
+      </div>
+    </div>
+    <div class='box-info'>
+                          <p><button onclick="closeLoginInfo();" class='b b-info i i-left' title='Back to Sign In'></button><h3>Need Help?</h3>
+    
+                          <div class='line-wh'></div>
+                          <a  class='b-support' routerLink="/resetpassword" title='Forgot Password?'> Forgot Password?</a>
+                         
+  </div>
+  
+  
+   <div class='icon-credits'>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a>, <a href="http://www.flaticon.com/authors/budi-tanrim" title="Budi Tanrim">Budi Tanrim</a> & <a href="http://www.flaticon.com/authors/nice-and-serious" title="Nice and Serious">Nice and Serious</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+</div>

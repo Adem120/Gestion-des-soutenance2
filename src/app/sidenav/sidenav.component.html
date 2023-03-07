@@ -1,0 +1,25 @@
+<mat-nav-list >
+  <div class="logo py-4 img">
+    <img  src="https://th.bing.com/th/id/R.4adca42b40bca3a3ba0c1c94e282f2ce?rik=nAN07PcQpYCwbg&riu=http%3a%2f%2fwww.examanet.net%2fimages%2fImages%2fiset-nabeul.png&ehk=NaHZTwjwCZuJnS4VmHV%2fOmLEHFyVxsAmCfgFThosHNA%3d&risl=&pid=ImgRaw&r=0">
+   
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2">APPLICATIONS</h2>
+
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a *ngIf="getrole()"  mat-list-item routerLinkActive="list-item-active" routerLink="/stage1">
+    <mat-icon>liste</mat-icon> Stage initialisation
+  </a>
+  <a *ngIf="getrole1()" mat-list-item routerLinkActive="list-item-active" routerLink="/stage">
+    <mat-icon>liste</mat-icon> Stage perfactionnement
+  </a>
+ <div> <a mat-list-item routerLink="/etudients" > <mat-icon><i class="fa-solid fa-person"></i></mat-icon> Les Etudients</a></div>
+  <a mat-list-item routerLink="/ensiegnants"> <mat-icon><i class="fa-solid fa-person"></i></mat-icon> Les ensiegnants </a>
+  <a mat-list-item routerLink="/salles"> <mat-icon><i class="fa-solid fa-house"></i></mat-icon> Les salles </a>
+  <a  *ngIf="getadmin()" mat-list-item routerLink="/date"> <mat-icon><i class="fa-solid fa-calendar-days"></i></mat-icon> Les date </a>
+  <a mat-list-item routerLink="/reclamation"> <mat-icon><i class="fa-solid fa-triangle-exclamation"></i></mat-icon> Les Réclamation </a>
+  <a *ngIf="this.Role=='ADMIN'" mat-list-item routerLink="/responsable"> <mat-icon><i class="fa-solid fa-person"></i></mat-icon> Responsable Parcours </a>
+</mat-nav-list>

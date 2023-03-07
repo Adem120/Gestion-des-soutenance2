@@ -1,0 +1,30 @@
+<mat-toolbar>
+  <mat-toolbar-row class="justify-content-between">
+
+    <div *ngIf="!logins.loginun()" class="img">
+      <img
+        src="https://th.bing.com/th/id/R.4adca42b40bca3a3ba0c1c94e282f2ce?rik=nAN07PcQpYCwbg&riu=http%3a%2f%2fwww.examanet.net%2fimages%2fImages%2fiset-nabeul.png&ehk=NaHZTwjwCZuJnS4VmHV%2fOmLEHFyVxsAmCfgFThosHNA%3d&risl=&pid=ImgRaw&r=0">
+    </div>
+    <button *ngIf="logins.loginun()" mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div *ngIf="logins.loginun()"  class="row mr-2 ml-auto">
+      <ul class="row m-0 align-items-center">
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
+            <img src="./assets/user.jpg" alt="" class="user-image mr-1 p-2" />
+
+           {{logins.loginuser()}}
+            <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button (click)="logout()" mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

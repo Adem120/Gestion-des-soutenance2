@@ -1,0 +1,81 @@
+<h1>{{!typedialoge ? 'Ajouter stage' : 'Modifier stage'}}</h1>
+<div mat-dialog-content class="width-100">
+
+  <div class="alert alert-danger text-center" [hidden]="!error.message">{{error.message}}</div>
+
+</div>
+
+<form>
+
+  <mat-form-field class="center" appearance="fill">
+    <mat-label>Etudients</mat-label>
+
+    <mat-select matInput [formControl]="idetud" required>
+      <!--mat-error *ngIf="idetud.invalid">{{getErrorMessage()}}</mat-error-->
+      <mat-option *ngFor="let etu of etudiants" [value]="etu.id">{{etu.nom}} {{etu.prenom}} {{etu.parcours}} {{etu.groupe}} </mat-option>
+
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Ensiengnant 1</mat-label>
+
+    <mat-select matInput [formControl]="idens" required>
+      <!--mat-error *ngIf="idetud.invalid">{{getErrorMessage()}}</mat-error-->
+  
+      <mat-option *ngFor="let ens of ensegnants" [value]="ens.id">{{ens.nom}} {{ens.prenom}}</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field [hidden]="typestage==1" appearance="fill">
+    <mat-label>Ensiengnant 2</mat-label>
+
+    <mat-select matInput [formControl]="idens2" required>
+      <mat-error *ngIf="idetud.invalid">{{getErrorMessage()}}</mat-error>
+
+      <mat-option *ngFor="let ens of ensegnants" [value]="ens.id">{{ens.nom}} {{ens.prenom}}</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Date</mat-label>
+
+    <mat-select  [(ngModel)]="date" (ngModelChange)="sessionpossible($event)" name="id" required>
+      <mat-error *ngIf="idetud.invalid">{{getErrorMessage()}}</mat-error>
+     
+      <mat-option *ngFor="let d of dates" [value]="d.id" >{{d.date}}</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Heure</mat-label>
+
+    <mat-select [(ngModel)]="heure"  (ngModelChange)="salvid($event)" name="heure">
+      <mat-error *ngIf="idetud.invalid">{{getErrorMessage()}}</mat-error>
+
+      <mat-option *ngFor="let h of datepossibe" [value]="h">{{h}} </mat-option>
+
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>salles</mat-label>
+
+    <mat-select [formControl]="idsal" required>
+      <mat-error *ngIf="idsal.invalid">{{getErrorMessage()}}</mat-error>
+      <mat-option *ngFor="let s of salle" [value]="s.id"><p *ngIf="s.id==idsal"></p>{{s.numero}} {{s.block}}</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+
+
+
+  <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close="">Annuler</button>
+    <button mat-raised-button color="primary" (click)="addstage()">
+
+      {{!typedialoge ? 'Ajouter' : 'Modifier'}}</button>
+
+
+
+
+  </div>
+</form>

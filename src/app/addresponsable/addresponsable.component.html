@@ -1,0 +1,64 @@
+<h1>{{!typedialoge ? 'Ajouter Responsable' : 'Modifier Responsable'}}</h1>
+<div mat-dialog-content>
+ 
+	
+    <form>
+    
+      
+
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>NOM</mat-label>
+          <input  matInput [formControl]="nom"  required>
+          <mat-error *ngIf="nom.invalid">{{getErrorMessage()}}</mat-error>
+
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Prenom</mat-label>
+          <input  matInput [formControl]="prenom" required>
+          <mat-error *ngIf="prenom.invalid">{{getErrorMessage()}}</mat-error>
+       </mat-form-field></td>
+      </tr></table> 
+      <mat-form-field appearance="fill">
+        <mat-label >Role</mat-label>
+
+        <mat-select matInput [formControl]="role" required>
+        <mat-error *ngIf="role.invalid">{{getErrorMessage()}}</mat-error>
+
+          <mat-option value="TI"> TI</mat-option>
+          <mat-option value="MDW">MDW</mat-option>
+          <mat-option value="DSI">DSI</mat-option>
+          <mat-option value="RSI">RSI</mat-option>
+          <mat-option value="SEM">SEM</mat-option>
+          <mat-option value="Admin">ADMIN</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" [formControl]="emails" required>
+          <mat-error *ngIf="emails.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <div class="alert alert-danger" [hidden]="!error.email">{{error.email}}</div>
+
+      </div>
+      <mat-form-field class="example-full-width" [hidden]="typedialoge">
+        <mat-label>Password</mat-label>
+        <input matInput type="password"[formControl]="password" required>
+        <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    
+    
+
+    
+   <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close="">Annuler</button>
+    <button mat-raised-button color="primary" (click)="addresponsable()" >
+
+    {{!typedialoge ? 'Ajouter' : 'Modifier'}}</button>
+      
+      
+       
+   
+   </div>
+</form>

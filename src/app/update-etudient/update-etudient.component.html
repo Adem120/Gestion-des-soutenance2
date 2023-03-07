@@ -1,0 +1,63 @@
+<h1>Modifier un etudient</h1>
+<div mat-dialog-content>
+    <form>
+      <mat-form-field class="example-full-width">
+        <mat-label>Cin</mat-label>
+        <input matInput [formControl]="cin" [(ngModel)]="etudiant.cin" >
+        <mat-error *ngIf="cin.invalid">{{getErrorMessage()}}</mat-error>
+
+      </mat-form-field>
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>NOM</mat-label>
+          <input matInput [formControl]="nom" [(ngModel)]="etudiant.nom" >
+          <mat-error *ngIf="nom.invalid">{{getErrorMessage()}}</mat-error>
+
+        </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+          <mat-label>Prenom</mat-label>
+          <input matInput [formControl]="prenom" [(ngModel)]="etudiant.prenom" required>
+          <mat-error *ngIf="prenom.invalid">{{getErrorMessage()}}</mat-error>
+       </mat-form-field></td>
+      </tr></table> 
+   
+      <div>
+      <mat-form-field appearance="fill">
+        <mat-label >Parcours</mat-label>
+
+        <mat-select matInput [formControl]="parcours" [(ngModel)]="etudiant.parcours"  >
+        <mat-error *ngIf="parcours.invalid">{{getErrorMessage()}}</mat-error>
+
+          <mat-option value="DSI"> DSI</mat-option>
+          <mat-option value="MDW">MDW</mat-option>
+          <mat-option value="MDW">RSI</mat-option>
+          <mat-option value="SEM">SEM</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>Groupe</mat-label>
+        <input matInput [formControl]="groupe" [(ngModel)]="etudiant.groupe" >
+        <mat-error *ngIf="groupe.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label >Type de stage</mat-label>
+          <mat-error *ngIf="stage.invalid">{{getErrorMessage()}}</mat-error>
+
+          <mat-select matInput matInput [formControl]="stage" [(ngModel)]="etudiant.stage"  required>
+            <mat-option value="1"> initialisation</mat-option>
+            <mat-option value="2">parfactionnement</mat-option>
+            
+          </mat-select>
+        </mat-form-field>
+      </div>
+   <div mat-dialog-actions [align]="'end'">
+    <button mat-raised-button color="warn" mat-dialog-close="">Annuler</button>
+    <button mat-raised-button color="primary" (click)="updateEtudiant()" >
+        Modifier
+       
+    </button>
+   </div>
+</form>
